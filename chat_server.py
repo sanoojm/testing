@@ -97,22 +97,29 @@ class Chat:
                 return 'User: %s' % (self.string)
 
 
-args=sys.argv[1:]
-optlist,args=getopt.getopt(args,'-r:-i:')
-run_as = optlist[0][1]
-server_ip = optlist[1][1]
-login=1
-me=Chat(run_as,server_ip)
-if run_as == "client": me.send_input('`INVISIBLE-PYTHON-CHAT-WORD-  `')
-while login:
+def main():
+	args=sys.argv[1:]
+	optlist,args=getopt.getopt(args,'-r:-i:')
+	run_as = optlist[0][1]
+	server_ip = optlist[1][1]
+	login=1
+	me=Chat(run_as,server_ip)
+	if run_as == "client": me.send_input('`INVISIBLE-PYTHON-CHAT-WORD-  `')
+	while login:
 
-   try:
-        me.whattodo()
+	   try:
+	        me.whattodo()
 
-   except KeyboardInterrupt:
-        login=0
-        print "You are logged out."
-        me.send_input("User has logged out")
-   else:
-        print "The program has crashed"
+	   except KeyboardInterrupt:
+	        login=0
+	        print "You are logged out."
+        	me.send_input("User has logged out")
+
+	   else:
+	        print "The program has crashed"
+
+
+if __name__ == '__main__':
+	main()
+
 
