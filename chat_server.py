@@ -98,13 +98,22 @@ class Chat:
 
 
 def main():
-	args=sys.argv[1:]
-	optlist,args=getopt.getopt(args,'-r:-i:')
-	run_as = optlist[0][1]
-	server_ip = optlist[1][1]
+	run_as, server_ip = command_line_args()
 	login=1
 	me=Chat(run_as,server_ip)
 	if run_as == "client": me.send_input('`INVISIBLE-PYTHON-CHAT-WORD-  `')
+	loop(login,me)
+
+def command_line_args():
+	args=sys.argv[1:]
+	try:
+		optlist,args=getopt.getopt(args,'-r:-i:')
+	except getopt.GetoptError:          
+	        usage()                         
+	        sys.exit(2)  
+	return (optlist[0][1], optlist[1][1])
+
+def loop(login,me):
 	while login:
 
 	   try:
@@ -117,6 +126,17 @@ def main():
 
 	   else:
 	        print "The program has crashed"
+	
+def usage():
+
+         print '''Usage:\npython''',sys.argv[0],''' -r (server|client) -i (server ip address)
+
+         -r  run_as, it can be server/ client.
+             One instance of the script should be server and the other should be client
+         -i  IP address of the machine where the script is running as server
+
+         Ex: python ''',sys.argv[0],''' -r server -i 127.0.0.1
+             python ''',sys.argv[0],''' -r client -i 127.0.0.1 \n'''
 
 
 if __name__ == '__main__':
