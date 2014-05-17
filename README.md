@@ -3,17 +3,21 @@ Simple-Python-Chat-Server
 
 Simple-Python-Chat-Server is a Chat program coded in Python with basic Python modules.
 
-Usage:
+##Requirements:
+- Python
+- Linux
 
-python  chat_server.py  -r (server|client) -i (server ip address)
+###Usage:
 
--r run_as, it can be server/ client.
+Run `python  chat_server.py  -r (server|client) -i (server ip address)`
 
-One instance of the script should be server and the other should be client
+    -r  run_as, it can be server/ client.
+    -i  IP address of the machine where the script is running as server
 
--i IP address of the machine where the script is running as server
 
-Ex: 
+Run one instance of the script as server and the other should be client. 
+
+Example: 
 
 python chat_server.py -r server -i 127.0.0.1
 
