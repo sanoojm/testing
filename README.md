@@ -1,4 +1,4 @@
-Simple-Python-Chat-Server
+Simple-Python-Chat-Server.
 =========================
 
 Simple-Python-Chat-Server is a Chat program coded in Python with basic Python modules.
